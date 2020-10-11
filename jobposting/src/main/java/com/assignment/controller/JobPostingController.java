@@ -19,12 +19,21 @@ public class JobPostingController {
 	@Autowired
 	JobPostingDao jobPostingDao;
 	
-	@GetMapping("/getJobPosts")
+	/**
+	 * getJobPosts method is used to get all jobs that are posted.
+	 * @return List<JobPostingEntity>
+	 */
+	@GetMapping("/jobPosts")
 	public List<JobPostingEntity> getJobPosts() {
 		List<JobPostingEntity> list = (List<JobPostingEntity>) jobPostingDao.findAll();
 		return list;
 	}
 	
+	/**
+	 * jobPost method is used to post job.
+	 * @param JobPostingEntity
+	 * @return JobPostingEntity
+	 */
 	@PostMapping(value="/jobPost", produces = "application/json")
 	public JobPostingEntity jobPost(@Valid @RequestBody JobPostingEntity jobPostingEntity) {
 		jobPostingDao.save(jobPostingEntity);

@@ -1,6 +1,7 @@
 package com.assignment.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -10,7 +11,8 @@ import javax.validation.constraints.NotBlank;
 public class JobPostingEntity {
 	
 	@Id
-	private int jobId;
+	@GeneratedValue
+	private long jobId;
 	
 	@NotBlank(message="jobRole cannot be empty")
 	private String jobRole;
@@ -29,11 +31,11 @@ public class JobPostingEntity {
 	@NotBlank(message="user cannot be empty")
 	private String user;
 
-	public int getJobId() {
+	public long getJobId() {
 		return jobId;
 	}
 
-	public void setJobId(int jobId) {
+	public void setJobId(long jobId) {
 		this.jobId = jobId;
 	}
 

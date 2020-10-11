@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 	
 	//handling custom error messages
+	/**
+	 * customErrorHandling method is used to hable custom error messages.
+	 * @param exception
+	 * @return ResponseEntity<?>
+	 */
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<?> customErrorHandling(MethodArgumentNotValidException exception){
 		ErrorDetails errorDetails = 
