@@ -1,11 +1,9 @@
 package com.assignment.model;
 
-import java.util.List;
-
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="tbl_job_posting")
@@ -14,23 +12,23 @@ public class JobPostingEntity {
 	@Id
 	private int jobId;
 	
+	@NotBlank(message="jobRole cannot be empty")
 	private String jobRole;
 	
+	@NotBlank(message="company cannot be empty")
 	private String company;
 	
 	private String experience;
 	
 	private String jobDescription;
-	
+
 	private String postingLocation;
-	
-//	@ElementCollection
-//	private List<String> requiredSkillsList;
 
 	private String noticePeriod;
 	
+	@NotBlank(message="user cannot be empty")
 	private String user;
-	
+
 	public int getJobId() {
 		return jobId;
 	}
@@ -79,14 +77,6 @@ public class JobPostingEntity {
 		this.postingLocation = postingLocation;
 	}
 
-//	public List<String> getRequiredSkillsList() {
-//		return requiredSkillsList;
-//	}
-//
-//	public void setRequiredSkillsList(List<String> requiredSkillsList) {
-//		this.requiredSkillsList = requiredSkillsList;
-//	}
-
 	public String getNoticePeriod() {
 		return noticePeriod;
 	}
@@ -102,4 +92,6 @@ public class JobPostingEntity {
 	public void setUser(String user) {
 		this.user = user;
 	}
+	
+	
 }

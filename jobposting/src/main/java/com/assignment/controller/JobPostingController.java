@@ -1,12 +1,13 @@
 package com.assignment.controller;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.assignment.dao.JobPostingDao;
@@ -24,8 +25,8 @@ public class JobPostingController {
 		return list;
 	}
 	
-	@PostMapping("/jobPost")
-	public JobPostingEntity jobPost(JobPostingEntity jobPostingEntity) {
+	@PostMapping(value="/jobPost", produces = "application/json")
+	public JobPostingEntity jobPost(@Valid @RequestBody JobPostingEntity jobPostingEntity) {
 		jobPostingDao.save(jobPostingEntity);
 		return jobPostingEntity;
 	}
